@@ -11,7 +11,7 @@ Use DevExtreme (pie Charts)
 
 Use ngx-pagination
 
-Statistic with RxJs and Diagram,and tooltips with btn(Bootstrap)
+Statistic with RxJs and Diagram of  DevExtreme,and tooltips with btn(Bootstrap)
 
 Filter for  category and search category,and add new category
 
