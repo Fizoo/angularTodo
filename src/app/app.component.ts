@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {DarkModeService} from "./dark-mode.service";
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angularTodo';
+  title = 'ToDO';
+  isDark:boolean=false
+
+  constructor(private darkMode:DarkModeService) {
+    this.darkMode.mode$.subscribe(el=>this.isDark=el)
+  }
 }

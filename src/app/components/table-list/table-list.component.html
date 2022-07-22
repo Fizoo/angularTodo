@@ -1,0 +1,220 @@
+<div class="info" *ngIf="!!textInfo">
+  {{textInfo}}
+</div>
+
+<div class="recent">
+  <div class="row my-2">
+    <div class="col-10  d-none d-md-flex">
+      <div class="input-group  gap-3">
+        <input [(ngModel)]="search" type="text" class="form-control" placeholder="Search...">
+
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="selectPriority">
+          <option value="" selected>All priority</option>
+          <option *ngFor="let item of priorities ">{{item.name}}</option>
+        </select>
+
+        <select class="form-select" aria-label="Default select example1" [(ngModel)]="selectCategory">
+          <option value="" selected>All categories</option>
+          <option *ngFor="let item of categories ">{{item.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-2  d-flex justify-content-center">
+      <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add</button>
+    </div>
+  </div>
+
+  <div class="recent-order">
+    <table class="table  table-hover ">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">№</th>
+        <th scope="col">Name
+          <span class="filterSpan">
+              <i class="bi bi-arrow-up" (click)="filterUpName()"></i>
+              <i class="bi bi-arrow-down" (click)="filterDownName()"></i>
+            </span>
+        </th>
+        <th scope="col">Date
+          <span class="filterSpan">
+              <i class="bi bi-arrow-up" (click)="filterUpDate()"></i>
+              <i class="bi bi-arrow-down" (click)="filterDownDate()"></i>
+            </span>
+        </th>
+        <th scope="col">Priority
+          <span class="filterSpan">
+              <i class="bi bi-arrow-up" (click)="filterUpPriority()"></i>
+              <i class="bi bi-arrow-down" (click)="filterDownPriority()"></i>
+            </span>
+        </th>
+        <th scope="col">Category
+          <span class="filterSpan">
+              <i class="bi bi-arrow-up" (click)="filterUpCategory()"></i>
+              <i class="bi bi-arrow-down" (click)="filterDownCategory()"></i>
+            </span>
+        </th>
+        <th scope="col">Action</th>
+        <th scope="col">Check</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let item of list | filterName:search:selectPriority:selectCategory  | paginate: { itemsPerPage: 10, currentPage: page } ; let i=index"
+          [class.op]="item.status">
+
+        <td [appColorPr]="item.priority.name" class="colorPriority "></td>
+
+        <td>
+          {{i + 1}}
+        </td>
+
+        <td class="col-5 text-start ps-5 ">
+          {{item.name }}
+        </td>
+
+        <td class="col-1">
+          {{item.date| date:'MMM d, H:mm'}}
+        </td>
+
+        <td class="col-2">
+          {{item.priority.name}}
+        </td>
+
+        <td class="col-2">
+          {{item.category.name}}
+        </td>
+
+        <td class="col-1">
+          <div class="d-flex">
+            <button type="button" class="btn " [disabled]="item.status" (click)="updateTask(item)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal2">
+              <i class="bi bi-pencil-fill text-secondary"></i>
+            </button>
+            <button type="button" class="btn" (click)="remove(item.id)" [disabled]="item.status">
+              <i class="bi bi-trash text-danger"></i>
+            </button>
+          </div>
+        </td>
+
+        <td class="col-1">
+          <input class="form-check-input mt-0" type="checkbox" (click)="checkTask(item)" [checked]="item.status">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="has-text-centered">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="submit()">
+
+            <div class="mb-1">
+              <label for="recipient-name" class="col-form-label  ">Name:</label>
+              <input [ngClass]="{isValid:name.invalid && name.touched }" type="text" class="form-control  "
+                     id="recipient-name" formControlName="name">
+              <small *ngIf="name.invalid && name.touched">Name is required</small>
+            </div>
+
+            <div class="mb-1">
+              <label for="categoryOptionsList" class="col-form-label">Category:</label>
+
+              <select [ngClass]="{isValid:category.invalid && category.touched }" class="form-select "
+                      id="categoryOptionsList" formControlName="category">
+                <option value="">Choose Category</option>
+                <option *ngFor="let item of categories" [ngValue]="item.name">{{item.name}}</option>
+              </select>
+              <small *ngIf="category.invalid && category.touched ">Category is required</small>
+            </div>
+
+            <div class="mb-1">
+
+              <label for="datalistOptions" class="col-form-label">Priority:</label>
+
+              <select [ngClass]="{isValid:priority.invalid && priority.touched }" class="form-select"
+                      id="datalistOptions"
+                      formControlName="priority">
+                <option value="">Choose Priority</option>
+                <option *ngFor="let item of priorities" [ngValue]="item">{{item.name}}</option>
+              </select>
+              <small *ngIf="priority.invalid && priority.touched">Priority is required</small>
+
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <input (click)="submit()" type="submit" value="Add" class="btn btn-primary" data-bs-dismiss="modal"
+                 [disabled]="form.invalid"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Upload Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="submit()">
+
+            <div class="mb-1">
+              <label for="recipient-name2" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="recipient-name2" formControlName="name"
+                     [value]="tempTask.name">
+            </div>
+
+            <div class="mb-1">
+              <label for="categoryOptionsList2" class="col-form-label">Category:</label>
+
+              <!--  <input class="form-control" list="categoryOptionsList" id="categoryList" formControlName="category" placeholder="Category"   [value]="tempTask.category">
+    -->
+              <select class="form-select" id="categoryOptionsList2" formControlName="category">
+                <option value="{{tempTask.category}}">{{tempTask.category}}</option>
+                <option *ngFor="let item of categories" [ngValue]="item.name">{{item.name}}</option>
+              </select>
+            </div>
+
+            <div class="mb-1">
+
+              <label for="datalistOptions2" class="col-form-label">Priority:</label>
+
+              <!-- <input class="form-control" list="datalistOptions" id="priorityList" placeholder="Priority" formControlName="priority" [value]="tempTask.priority">
+   -->
+              <select class="form-select" id="datalistOptions2" formControlName="priority">
+                <option value="{{tempTask.priority}}">{{tempTask.priority}}</option>
+                <option *ngFor="let item of priorities" [ngValue]="item.name">{{item.name}}</option>
+              </select>
+
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <input (click)="submitUpdate()" type="submit" value="Add" class="btn btn-primary" data-bs-dismiss="modal"/>
+          <!--[disabled]="form.invalid"-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

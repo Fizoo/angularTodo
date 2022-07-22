@@ -1,0 +1,172 @@
+<div class="main-page ">
+
+  <div class="collapse collapse-horizontal  show" id="collapseWidthExample">
+
+    <div class="insights ">
+
+      <div class="pies-container" *ngFor="let option of options">
+        <div class="title ">
+          <i [class]="option.icon"></i>
+        </div>
+
+        <dx-pie-chart
+          id="pie"
+          [title]="option.title"
+          [type]="option.type"
+          [palette]="option.palette"
+
+          [dataSource]="option.dataSource"
+        >
+          <dxi-series argumentField="name" valueField="count">
+            <dxo-label [customizeText]="option.custom" [visible]="true" position="inside" backgroundColor="none">
+              <dxo-font [size]="14"></dxo-font>
+            </dxo-label>
+          </dxi-series>
+         <!-- <dxo-size [width]="300" [height]="200"></dxo-size>-->
+          <dxo-adaptive-layout [width]="100"></dxo-adaptive-layout>
+          <dxo-legend
+            verticalAlignment="bottom"
+            horizontalAlignment="left"
+            itemTextPosition="right"
+            [columnCount]="1"
+          >
+          </dxo-legend>
+
+          <dxo-margin [right]="10" [top]="10" [bottom]="20"></dxo-margin>
+
+        </dx-pie-chart>
+      </div>
+
+    <!--
+      <div class="stat" *ngFor="let option of options">
+        <div class="title ">
+          <i class="bi bi-graph-up-arrow "></i>
+        </div>
+        <div class="middle ">
+          <dx-pie-chart
+            id="pie1"
+            title="Total statistic"
+            type="doughnut"
+            palette="material"
+            [customizeLabel]="customizeLabel"
+            [dataSource]="pieTotal"
+          >
+            <dxi-series argumentField="name" valueField="count">
+              <dxo-label [visible]="true" position="inside" backgroundColor="none">
+                <dxo-font [size]="14"></dxo-font>
+              </dxo-label>
+            </dxi-series>
+            <dxo-size [width]="300" [height]="200"></dxo-size>
+
+            <dxo-legend
+              verticalAlignment="bottom"
+              horizontalAlignment="left"
+              itemTextPosition="right"
+              [columnCount]="1"
+            >
+            </dxo-legend>
+
+            <dxo-margin [top]="10" [bottom]="20"></dxo-margin>
+
+          </dx-pie-chart>
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="title">
+          <i class="bi bi-bar-chart-fill"></i>
+        </div>
+        <div class="middle">
+          <dx-pie-chart
+            id="pie2"
+            title="Total statistic %"
+            type="doughnut"
+            palette="dark violet"
+            [customizeLabel]="customizeLabel"
+            [dataSource]="pieTotalProgress"
+          >
+            <dxi-series argumentField="name" valueField="count">
+              <dxo-label [customizeText]="customizeLabel" [visible]="true" position="inside" backgroundColor="none">
+                <dxo-font [size]="14"></dxo-font>
+              </dxo-label>
+            </dxi-series>
+            <dxo-size [width]="300" [height]="200"></dxo-size>
+            <dxo-legend
+              verticalAlignment="bottom"
+              horizontalAlignment="left"
+              itemTextPosition="right"
+              [columnCount]="1"
+            >
+            </dxo-legend>
+
+            <dxo-margin [top]="10" [bottom]="20"></dxo-margin>
+          </dx-pie-chart>
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="title">
+          <i class="bi bi-pie-chart-fill"></i>
+        </div>
+        <div class="middle">
+          <dx-pie-chart
+            id="pie3"
+            palette="violet"
+            [customizeLabel]="customizeLabel"
+            [dataSource]="piePriority"
+          >
+            <dxi-series argumentField="name" valueField="count">
+              <dxo-label [customizeText]="customizePriority"
+                         [visible]="true"
+                         position="inside"
+                         backgroundColor="none">
+                <dxo-font [size]="12"></dxo-font>
+              </dxo-label>
+            </dxi-series>
+            <dxo-size [width]="300" [height]="200"></dxo-size>
+            <dxo-legend
+              verticalAlignment="bottom"
+              horizontalAlignment="left"
+              itemTextPosition="right"
+              [columnCount]="1"
+            >
+            </dxo-legend>
+            <dxo-margin [top]="10" [bottom]="20"></dxo-margin>
+          </dx-pie-chart>
+        </div>
+
+      </div>
+
+      <div class="stat">
+        <div class="title">
+          <i class="bi bi-bar-chart-fill"></i>
+        </div>
+        <div class="middle">
+          <dx-pie-chart
+            id="pie4"
+            palette="pastel"
+            [dataSource]="pieCategory"
+          >
+            <dxi-series argumentField="name" valueField="count">
+              <dxo-label [visible]="true" [customizeText]="customizePriority" position="inside" backgroundColor="none">
+                <dxo-font [size]="14"></dxo-font>
+              </dxo-label>
+            </dxi-series>
+
+            <dxo-size [width]="300" [height]="200"></dxo-size>
+            <dxo-legend
+              verticalAlignment="bottom"
+              horizontalAlignment="left"
+              itemTextPosition="right"
+              [columnCount]="1"
+            >
+            </dxo-legend>
+            <dxo-margin [top]="10" [bottom]="20"></dxo-margin>
+          </dx-pie-chart>
+        </div>
+      </div>
+-->
+    </div>
+  </div>
+
+</div>

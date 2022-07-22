@@ -1,0 +1,144 @@
+
+img {
+  display: block;
+  width: 100%;
+}
+
+aside {
+  height: 100%;
+  margin-left: 1rem;
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 1em;
+
+    .input-group {
+      border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+
+      .form-control {
+        border: none;
+        background: var(--color-white);
+
+        &:focus {
+          background: var(--color-white);
+          color: var(--color-dark-variant);
+        }
+      }
+
+      .btn {
+        @media (max-width: 766px) {
+          width: 100%;
+          border: 1px solid #e8e8e8;
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 1rem;
+
+
+    .active {
+      background: var(--color-light);
+      color: var(--color-primary) ;
+      margin-left: 0;
+      transition: all 500ms ease;
+
+      &:before {
+        content: '';
+        width: 6px;
+        height: 100%;
+        background: var(--color-primary);
+      }
+    }
+
+    .a {
+      display: flex;
+      margin-left: 2rem;
+      gap: 1rem;
+      align-items: center;
+      justify-content: flex-start;
+      text-decoration: none;
+      position: relative;
+      height: 3.7rem;
+      transition: all 500ms ease;
+      color: var(--color-info-dark);
+
+      &:first-child {
+        margin-top: 15px;
+      }
+      i {
+        font-size: 1.6rem;
+        transition: all 500ms ease;
+      }
+
+      h3 {
+        font-weight: 500 ;
+        font-size: 0.87rem;
+      }
+
+      .val {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        transition: all 500ms ease;
+
+        .count {
+          margin-right: 2rem;
+          background: var(--bs-danger);
+          color: var(--bs-white);
+          padding: 2px 10px;
+          font-size: 11px;
+          border-radius: var(--border-radius-1);
+        }
+
+      }
+
+      &:last-child {
+        position: absolute;
+        bottom: 2rem;
+        width: 100%;
+      }
+
+      &:hover:not(.active) {
+        color: var(--color-primary);
+        margin-left: 1rem;
+
+        i {
+          color: var(--color-primary);
+        }
+
+        h3 {
+          color: var(--color-primary);
+        }
+
+        .val {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    hr {
+      margin: 0;
+      opacity: 0.15;
+      background: gray;
+    }
+  }
+
+  @media (max-width: 766px) {
+    width: 75px;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,123 @@
+.recent{
+    display: flex;
+    flex-direction: column;
+  background: var(--color-background);
+  width: 100%;
+  .input-group{
+    input{
+      background: var(--color-white);
+      &:focus{
+        background: var(--color-white);
+        color: var(--color-dark-variant);
+      }
+    }
+    select{
+      background: var(--color-white);
+      color: var(--color-dark-variant);
+
+    }
+  }
+  .recent-order{
+    margin-top: 1rem;
+
+    table{
+      background: var(--color-white);
+      width: 100%;
+      border-radius:var(--card-border-radius) ;
+      padding: var(--card-padding);
+      text-align: center;
+      box-shadow: var(--box-shadow);
+      transition: all 500ms ease;
+      border-bottom: 1px solid var(--color-light);
+        &:hover{
+          box-shadow: none;
+          color: var(--color-text);
+        }
+      tbody{
+        &:nth-child(3){
+          color: red;
+        }
+        tr{
+          color: var(--color-text);
+          border-bottom: 1px solid var(--color-light);
+
+          &:last-child{
+                td {
+                  border: none;
+                }
+          }
+          &:hover{
+            td{
+              color: var(--color-text);
+            }
+          }
+        }
+        td{
+          height: 2.8rem;
+          border-bottom: 1px solid var(--color-light);
+        }
+      }
+    }
+  }
+}
+
+.colorPriority{
+  padding: 5px;
+  width: 1rem ;
+  opacity: 0.5;
+}
+.isValid{
+  border: 1px solid red;
+}
+small {
+  color: red;
+}
+.op{
+  text-decoration: line-through;
+  opacity: 0.2;
+}
+thead{
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-text);
+  tr{
+    th{
+      .filterSpan{
+        display: none;
+      }
+      &:hover{
+        .filterSpan {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+.info{
+  display: grid;
+  place-items: center;
+  height: 5rem;
+  width: 220px;
+  font-size: 1.5rem;
+  background: #ea6868;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  z-index: 100;
+  border-radius: var(--border-radius-3);
+  box-shadow: var(--box-shadow);
+  color:var(--color-white);
+}
+
+.has-text-centered{
+  display: grid;
+  place-items: center;
+  background: var(--color-white);
+  color:var(--color-text);
+  padding-top: 0.5rem;
+  border-radius: var(--border-radius-3);
+}
+
+
+
+

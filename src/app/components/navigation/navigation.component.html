@@ -1,0 +1,76 @@
+
+  <aside>
+    <div class="actions ">
+      <div class="input-group ">
+        <input type="text" class="form-control d-none d-md-block"  [(ngModel)]="search" placeholder="Search category" >
+        <button class="btn btn-danger" type="button" id="button-addon2"    data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="bi bi-plus "></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="a"  (click)="loadTaskOfCategory('')">
+        <i class="bi bi-grid-fill"></i>
+        <h3 class="d-none d-md-block">All</h3>
+        <div class="val d-none d-md-flex">
+          <span class="count ">{{count}}</span>
+        </div>
+      </div>
+      <hr>
+      <div class="a"
+           [ngClass]="{'active':isActive===item.name}"
+           *ngFor="let item of category | filterCategory:search"
+          (click)="loadTaskOfCategory(item.name)"
+      >
+          <i *ngIf="item.icon" [ngClass]="item.icon"></i>
+          <h3  class="d-none d-md-block">{{item.name}}</h3>
+        <div class="val d-none d-md-flex">
+          <span class="count"> {{ getItemCount(item.name)}}</span>
+        </div>
+      </div>
+
+      <div class="a">
+        <i class="bi bi-box-arrow-right"></i>
+        <h3 class="d-none d-md-block">Logout</h3>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New category</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+              <div class="mb-1">
+                <label for="recipient-name" class="col-form-label">Name:</label>
+                <input type="text" class="form-control" id="recipient-name" formControlName="name">
+              </div>
+              <div class="mb-1">
+                <label for="recipient-style" class="col-form-label">Icon:</label>
+                <input type="text" class="form-control" id="recipient-style" formControlName="icon">
+
+
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <input (click)="submit()" type="submit" value="Add" class="btn btn-primary" data-bs-dismiss="modal"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+
+
+
+
+
+
