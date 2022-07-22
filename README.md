@@ -4,7 +4,9 @@
 https://fizoo.github.io/angularTodo/
 
 Use database on Firebase
+
 Use Bootstrap
+
 Use DevExtreme (pie Charts)
 Use ngx-pagination
 Statistic with RxJs and Diagram,and tooltips with btn(Bootstrap)
