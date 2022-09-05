@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ICategory, IList, IPriority} from "../../model/todoType";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CategoryService} from "../category.service";
-import {TasksService} from "../tasks.service";
+import {CategoryService} from "../service/category.service";
+import {TasksService} from "../service/tasks.service";
 import {priority} from 'src/assets/dataPriority';
-import {AlertService} from "../alert.service";
+import {AlertService} from "../service/alert.service";
 import {Subscription} from "rxjs";
 
 interface ITemp {

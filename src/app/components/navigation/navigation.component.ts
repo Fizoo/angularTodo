@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ICategory} from "../../model/todoType";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CategoryService} from "../category.service";
-import {TasksService} from "../tasks.service";
+import {CategoryService} from "../service/category.service";
+import {TasksService} from "../service/tasks.service";
 import {Subscription} from "rxjs";
+import {AuthService} from "../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navigation',
@@ -22,7 +24,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
 
   constructor(private categoryService: CategoryService,
-              private tasksService: TasksService) {
+              private tasksService: TasksService,
+              private auth:AuthService,
+              private router:Router
+              ) {
   }
 
   ngOnInit(): void {
@@ -71,4 +76,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
+  logout() {
+    console.log('hello')
+    this.auth.logout()
+    this.router.navigate(['/login'])
+
+  }
 }

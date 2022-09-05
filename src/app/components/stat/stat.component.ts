@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TasksService} from "../tasks.service";
+import {TasksService} from "../service/tasks.service";
 import {IList} from "../../model/todoType";
 import {Subscription} from "rxjs";
 

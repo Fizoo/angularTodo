@@ -13,6 +13,10 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
 import { DxPieChartModule} from "devextreme-angular";
 import {NgxPaginationModule} from "ngx-pagination";
+import { LoginComponent } from './components/login/login.component';
+import {AppRoutingModule} from "./app-routing.module";
+import { MainComponent } from './components/main/main.component';
+
 
 
 @NgModule({
@@ -24,7 +28,9 @@ import {NgxPaginationModule} from "ngx-pagination";
     NavigationComponent,
     StatComponent,
     TableListComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    MainComponent
 
   ],
     imports: [
@@ -32,9 +38,10 @@ import {NgxPaginationModule} from "ngx-pagination";
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-
         DxPieChartModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+       AppRoutingModule
+
     ],
   providers: [],
   bootstrap: [AppComponent]

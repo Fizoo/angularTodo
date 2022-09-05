@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {IList} from "../model/todoType";
+import {IList} from "../../model/todoType";
 import {DataBaseService} from "./dataBase.service";
 import { AlertService } from './alert.service';
 

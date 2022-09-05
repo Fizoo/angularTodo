@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {map, Observable} from "rxjs";
-import {ICategory} from "../model/todoType";
+import {ICategory} from "../../model/todoType";
 
 import {HttpClient} from "@angular/common/http";
 import { AlertService } from './alert.service';

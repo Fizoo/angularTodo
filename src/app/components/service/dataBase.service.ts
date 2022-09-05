@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IList} from "../model/todoType";
+import {IList} from "../../model/todoType";
 import {map, Observable} from "rxjs";
 
 @Injectable({
