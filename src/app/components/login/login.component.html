@@ -1,4 +1,9 @@
  <div class="main">
+
+   <div *ngIf="!!errorText" class="alert">
+     {{errorText}}
+   </div>
+
     <div class="myForm">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <h3>Log In</h3>

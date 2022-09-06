@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {catchError, Subject, throwError} from "rxjs";
 
 export interface IFbAuthResponse {
   localId: string;
@@ -22,11 +23,14 @@ export interface User {
 })
 export class AuthService {
   readonly  url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAzcN-1cjF3tuUw57M7KSL0Vj7wNGGgQSA'
+  public error$=new Subject<string>()
 
   constructor(private http:HttpClient) { }
 
   login(user:User){
-    return this.http.post(`${this.url}`,user).pipe()
+    return this.http.post(`${this.url}`,user).pipe(
+      catchError(this.handleError.bind(this))
+    )
   }
 
     logout() {
@@ -59,6 +63,28 @@ export class AuthService {
     } else {
       localStorage.clear()
     }
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.log('hh')
+    const {message} = error.error.error
+
+    switch (message) {
+      case 'INVALID_EMAIL':
+        this.error$.next('Invalid Email')
+        break
+      case 'INVALID_PASSWORD':
+        this.error$.next('Invalid Password')
+        break
+      case 'EMAIL_NOT_FOUND':
+        this.error$.next('Email not found')
+        break
+    }
+
+    if (message) {
+      console.log(message)
+    }
+    return throwError(()=>error)
   }
 
 }
