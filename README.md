@@ -3,6 +3,11 @@
 
 https://fizoo.github.io/angularTodo/
 
+Firebase database and Authentication
+
+admin : login oleg.mykytchuk@gmail.com 
+        password 123456
+
 Use database on Firebase
 
 Use Bootstrap
@@ -26,4 +31,11 @@ Modal window for add new category,new and change tasks with Bootstrap 5
 Dark and white mode for UI
 
 Responsible Web Applications
+
+![image](https://user-images.githubusercontent.com/45512345/188486801-33236d76-6d7f-4b27-8804-fdc68cb4e7d2.png)
+![image](https://user-images.githubusercontent.com/45512345/188486843-a958efdf-933f-472f-9ee3-221766d97dcc.png)
+![image](https://user-images.githubusercontent.com/45512345/188486869-6cec9ba5-ebd7-48a8-9c3d-4e1fda6a4c7e.png)
+![image](https://user-images.githubusercontent.com/45512345/188486926-3f9c735d-2cf3-4565-a657-18043c178d01.png)
+
+
 
