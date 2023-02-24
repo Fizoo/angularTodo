@@ -37,7 +37,9 @@ aside {
   }
 
   .sidebar {
-    background: var(--color-white);
+    //background: var(--color-white);
+    background: linear-gradient(to bottom, var(--color-white) , var(--color-background) );
+
     display: flex;
     flex-direction: column;
     height: 86vh;

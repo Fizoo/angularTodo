@@ -38,21 +38,15 @@
   text-decoration: none ;
   list-style: none;
   box-sizing: border-box;
-
 }
 
-
-html{
-  font-size: 14px ;
-  background:var(--color-background) ;
-}
-
-body{
+body,html{
  // font-family: 'Roboto', sans-serif;
+  font-size: 14px ;
   font-family: 'Poppins', sans-serif;
-  width: 100vw;
-  height: 100vh;
-  font-size: 0.88rem;
+  min-width: 100%;
+  min-height: 100%;
+
   line-height: 1.6;
   background:var(--color-background) ;
   user-select: none;
@@ -68,7 +62,6 @@ body{
   --color-light: rgba(0,0,0,0.4);
   --box-shadow: 0 2rem 3rem var(--color-light);
   --color-text:white;
-
 }
 
 h2{

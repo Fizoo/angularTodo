@@ -19,17 +19,23 @@ nav {
   }
 
   .right {
+
     .toggle {
+
       background: var(--color-dark-variant);
-       border-radius: var(--border-radius-1);
+       //border-radius: var(--border-radius-1);
+       border-radius: 2rem;
+
       .btn {
-        width: 50%;
+
         i {
           font-size: 1rem;
         }
         &.active {
           background: var(--color-primary);
           color: white;
+          border-radius: 2rem;
+
         }
       }
     }
