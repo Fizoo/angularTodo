@@ -37,13 +37,13 @@
               <i class="bi bi-arrow-down" (click)="filterDownName()"></i>
             </span>
         </th>
-        <th class="d-none d-sm-block" scope="col">Date
+        <th scope="col">Date
           <span class="filterSpan">
               <i class="bi bi-arrow-up" (click)="filterUpDate()"></i>
               <i class="bi bi-arrow-down" (click)="filterDownDate()"></i>
             </span>
         </th>
-        <th scope="col" class="d-none d-sm-inline">Priority
+        <th scope="col" >Priority
           <span class="filterSpan">
               <i class="bi bi-arrow-up" (click)="filterUpPriority()"></i>
               <i class="bi bi-arrow-down" (click)="filterDownPriority()"></i>
@@ -74,13 +74,13 @@
           {{item.name }}
         </td>
 
-        <td class=" d-none d-sm-inline  col-1">
-          {{item.date| date:'MMM d, H:mm'}}
+        <td class=" d-none d-sm-inline  col-1 ">
+          {{item.date| date:'d/MM,H:mm'}}
         </td>
 
-        <td [appColorPr]="item.priority.name" class="col-2 d-none d-sm-inline ">
+        <td  class="col-2  ">
 
-         <!-- {{item.priority.name}}-->
+          {{item.priority.name}}
         </td>
 
         <td class="col-2">
