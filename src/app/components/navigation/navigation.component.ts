@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ICategory} from "../../model/todoType";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {CategoryService} from "../service/category.service";
 import {TasksService} from "../service/tasks.service";
 import {Subscription} from "rxjs";
@@ -16,7 +16,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   count: number
   category: ICategory[]
   search: string = ''
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   isActive: string = ''
   aSub: Subscription
   bSub: Subscription
@@ -34,9 +34,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.aSub = this.categoryService.getAll().subscribe(el => this.category = el)
     this.bSub = this.tasksService.tasks$.subscribe(el => this.count = el.length)
 
-    this.form = new FormGroup({
-      name: new FormControl('', Validators.required),
-      icon: new FormControl('')
+    this.form = new UntypedFormGroup({
+      name: new UntypedFormControl('', Validators.required),
+      icon: new UntypedFormControl('')
     })
   }
 

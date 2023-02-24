@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ICategory, IList, IPriority} from "../../model/todoType";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {CategoryService} from "../service/category.service";
 import {TasksService} from "../service/tasks.service";
 import {priority} from 'src/assets/dataPriority';
@@ -25,7 +25,7 @@ export class TableListComponent implements OnInit,OnDestroy {
   cSub:Subscription
 
   list: IList[] = []
-  form: FormGroup;
+  form: UntypedFormGroup;
   priorities: IPriority[]
   categories: ICategory[]
   tempTask: ITemp = {
@@ -54,10 +54,10 @@ export class TableListComponent implements OnInit,OnDestroy {
    this.cSub= this.categoryService.getAll().subscribe(el => this.categories = el)
     this.priorities = priority
 
-    this.form = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      priority: new FormControl('', Validators.required),
-      category: new FormControl('', Validators.required)
+    this.form = new UntypedFormGroup({
+      name: new UntypedFormControl('', [Validators.required, Validators.minLength(2)]),
+      priority: new UntypedFormControl('', Validators.required),
+      category: new UntypedFormControl('', Validators.required)
     })
 
     this.aSub=this.infoService.info$.subscribe(el=> {

@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import {AuthService, User} from "../service/auth.service";
 import {Subscription} from "rxjs";
@@ -11,7 +11,7 @@ import {Subscription} from "rxjs";
 })
 export class LoginComponent implements OnInit,OnDestroy {
 
-  form: FormGroup
+  form: UntypedFormGroup
   aSub:Subscription
   bSub:Subscription
   errorText: string
@@ -21,12 +21,12 @@ export class LoginComponent implements OnInit,OnDestroy {
               ) {}
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl('', [
+    this.form = new UntypedFormGroup({
+      email: new UntypedFormControl('', [
         Validators.required, Validators.email]),
-      password: new FormControl('', [
+      password: new UntypedFormControl('', [
         Validators.required, Validators.minLength(6)]),
-      checkbox: new FormControl(true,)
+      checkbox: new UntypedFormControl(true,)
     })
 
    this.bSub= this.auth.error$.subscribe(el=>this.errorText=el)
